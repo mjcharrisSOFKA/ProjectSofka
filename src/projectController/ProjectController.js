@@ -11,9 +11,10 @@ for (let index = 0; index < jsonArrayLength; index++) {
   projectObject = new projectImport();
   projectObject.setName(fileContents.projects[index].name);
   projectsArray.push(projectObject);
+  console.log(projectObject, projectsArray);
 }
 
 let title = document.getElementById('projectName');
-console.log(projectsArray);
+console.log(projectsArray[0].getName());
 
-title.innerHTML = projectsArray[0].getName;
+title.innerText = projectsArray[0].getName();
