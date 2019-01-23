@@ -1,9 +1,6 @@
 
-//onst fs = require('fs');
+const fileContents = require('../data/ProjectData.json');
 
-const fileContents = require('../../data/ProjectData.json');
+console.log(fileContents);
 
-var objectsProyect = JSON.parse(fileContents);
-
-console.log(objectsProyect);
 

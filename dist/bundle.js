@@ -86,14 +86,14 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./data/ProjectData.json":
-/*!*******************************!*\
-  !*** ./data/ProjectData.json ***!
-  \*******************************/
+/***/ "./src/data/ProjectData.json":
+/*!***********************************!*\
+  !*** ./src/data/ProjectData.json ***!
+  \***********************************/
 /*! exports provided: projects, default */
 /***/ (function(module) {
 
-eval("module.exports = {\"projects\":[{\"name\":\"pertrinum\",\"status\":\"100\",\"description\":\"PerTrinum incrementa sus clientes por medio de comunicados, promocionando e interactuando de manera efectiva con sus clientes. \",\"startDate\":\"12082016\",\"endDate\":\"12082018\"},{\"name\":\"hibot\",\"status\":\"100\",\"description\":\"HIBOT es el módulo que le faltaba a su Centro de Contactos para convertirlo en una herramienta aún más competitiva.\",\"startDate\":\"01152015\",\"endDate\":\"01152018\"},{\"name\":\"frow\",\"status\":\"59\",\"description\":\"es una plataforma digital (app móvil + website) para la Industria Fashion y Retail en Colombia.\",\"startDate\":\"08052017\",\"endDate\":\"08152019\"}]};\n\n//# sourceURL=webpack:///./data/ProjectData.json?");
+eval("module.exports = {\"projects\":[{\"name\":\"pertrinum\",\"status\":\"100\",\"description\":\"PerTrinum incrementa sus clientes por medio de comunicados, promocionando e interactuando de manera efectiva con sus clientes. \",\"startDate\":\"12082016\",\"endDate\":\"12082018\"},{\"name\":\"hibot\",\"status\":\"100\",\"description\":\"HIBOT es el módulo que le faltaba a su Centro de Contactos para convertirlo en una herramienta aún más competitiva.\",\"startDate\":\"01152015\",\"endDate\":\"01152018\"},{\"name\":\"frow\",\"status\":\"59\",\"description\":\"es una plataforma digital (app móvil + website) para la Industria Fashion y Retail en Colombia.\",\"startDate\":\"08052017\",\"endDate\":\"08152019\"}]};\n\n//# sourceURL=webpack:///./src/data/ProjectData.json?");
 
 /***/ }),
 
@@ -104,7 +104,7 @@ eval("module.exports = {\"projects\":[{\"name\":\"pertrinum\",\"status\":\"100\"
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\r\n//onst fs = require('fs');\r\n\r\nconst fileContents = __webpack_require__(/*! ../../data/ProjectData.json */ \"./data/ProjectData.json\");\r\n\r\nvar objectsProyect = JSON.parse(fileContents);\r\n\r\nconsole.log(objectsProyect);\r\n\r\n\n\n//# sourceURL=webpack:///./src/projectController/ProjectController.js?");
+eval("\r\nconst fileContents = __webpack_require__(/*! ../data/ProjectData.json */ \"./src/data/ProjectData.json\");\r\n\r\nconsole.log(fileContents);\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/projectController/ProjectController.js?");
 
 /***/ })
 
