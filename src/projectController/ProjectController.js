@@ -1,18 +1,28 @@
 
 import projectImport from "../model/ProjectClass";
+import { findByName, update, erase, showAll } from "./../model/ProjectFunctions"
 
 const fileContents = require('../data/ProjectData.json');
 let projectCards = document.getElementById('projects')
 let projectsArray = [];
 let jsonArrayLength = fileContents.projects.length;
 let projectObject;
+let foundByName = new projectImport();
+
+try {
+  foundByName = findByName(prompt("¿Qué empresa desea buscar?"), fileContents.projects);
+  addDivCard(foundByName.img, foundByName.name, foundByName.description);
+} catch (error) {
+  console.log("Error: " + error);
+}
+
 
 (function printProjects() {
   for (let index = 0; index < jsonArrayLength; index++) {
     createObject(index);
-    addDivCard(projectsArray[index].getImg(),
-      projectsArray[index].getName(),
-      projectsArray[index].getDescription());
+    //addDivCard(projectsArray[index].getImg(),
+    //  projectsArray[index].getName(),
+    //  projectsArray[index].getDescription());
   }
 }());
 
@@ -38,5 +48,5 @@ function addDivCard(image, title, description) {
     + "<h5 class='card-title'> " + title + " </h5> "
     + "<p class='card-text'> " + description + " </p>";
 
-  document.getElementById('projects').appendChild(div);
+  projectCards.appendChild(div);
 }
