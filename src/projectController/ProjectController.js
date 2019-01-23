@@ -1,12 +1,13 @@
 
 import projectImport from "../model/ProjectClass";
-import { findByName, update, erase, showAll } from "./../model/ProjectFunctions"
+import { findByName, findByDate } from "./../model/ProjectFunctions"
 
 const fileContents = require('../data/ProjectData.json');
 let projectCards = document.getElementById('projects')
 let projectsArray = [];
 let jsonArrayLength = fileContents.projects.length;
 let projectObject;
+let foundByName = new projectImport();
 
 try {
   createProjectObjects();
@@ -14,28 +15,41 @@ try {
   console.log("Error: " + error);
 }
 
-(function searchByName() {
+document.getElementById('searching-name-trigger').onclick = function searchByName() {
   try {
-    document.getElementById('search-trigger').addEventListener('click', () => {
-      let searchingParameter = document.getElementById('searching-parameter');
-      let foundBy = findByName(searchingParameter.value, projectsArray);
-      projectCards.innerText = " ";
-      addDivCard(foundBy.image, foundBy.name, foundBy.description)
-    });
-
+    let searchByName = document.getElementById('search-by-name');
+    
+    foundByName = findByName(searchByName.value, projectsArray);
+    projectCards.innerText = " ";
+    if (foundByName !== undefined) {
+      addDivCard(foundByName.image, foundByName.name, foundByName.description)
+    }
   } catch (error) {
     console.log("Error: " + error);
-
   }
-}());
+};
 
-function printProjects() {
+document.getElementById('searching-date-trigger').onclick = function searchByDate() {
+  try {
+    let searchByDate = document.getElementById('search-by-date');
+    
+    foundByName = findByDate(searchByDate.value, projectsArray);
+    projectCards.innerText = " ";
+    if (foundByName !== undefined) {
+      addDivCard(foundByName.image, foundByName.name, foundByName.description)
+    }
+  } catch (error) {
+    console.log("Error: " + error);
+  }
+};
+
+(function printProjects() {
   for (let index = 0; index < jsonArrayLength; index++) {
     addDivCard(projectsArray[index].getImg(),
       projectsArray[index].getName(),
       projectsArray[index].getDescription());
   }
-};
+}());
 
 function createProjectObjects() {
   for (let index = 0; index < jsonArrayLength; index++) {

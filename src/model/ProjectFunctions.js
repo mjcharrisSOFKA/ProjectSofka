@@ -1,15 +1,15 @@
 
+'use strict';
+
+let projectCards = document.getElementById('projects')
+
 function findByName(name, projectsArray) {
-  console.log("Finding by name...")
   try {
-    for (let index = 0; index < projectsArray.length; index++) {
-      if (name.toLowerCase() === projectsArray[index].name) {
-        console.log(projectsArray[index]);
-        console.log("Found!");
-        return projectsArray[index];
+    for (let i = 0; i < projectsArray.length; i++) {
+      if (name.toLowerCase() === projectsArray[i].name) {
+        return projectsArray[i];
       } else {
-        alert("DEJE DE BUSCAR ESTUPIDECES!!!")
-        console.log("Project not found!")
+        showAlertNotFound();
       }
     }
   } catch (error) {
@@ -17,8 +17,27 @@ function findByName(name, projectsArray) {
   }
 };
 
-function update(id) { };
-function erase(id) { };
-function showAll() { };
+function findByDate(date, projectsArray){
+  try {
+    for (let i = 0; i < projectsArray.length; i++) {
+      if (date === projectsArray[i].startDate || date === projectsArray[i].endDate) {
+        return projectsArray[i];
+      } else {
+        showAlertNotFound();
+      }
+    }
+  } catch (error) {
+    console.log("Error: " + error);
+  }
+}
 
-module.exports = { findByName, update, erase, showAll };
+function showAlertNotFound() {
+  let div = document.createElement('div');
+  div.classList.add('alert', 'alert-primary');
+  div.role = "alert";
+  div.innerText = "Proyecto no encontrado";
+  projectCards.appendChild(div);
+}
+
+
+module.exports = { findByName, findByDate };

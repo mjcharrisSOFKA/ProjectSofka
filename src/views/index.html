@@ -6,17 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
         crossorigin="anonymous">
-    <title>Proyects</title>
+    <title>Projects</title>
 
 </head>
 
 <body>
     <div>
         <label> Buscar por nombre
-            <input type="text" name="finder" id="searching-parameter" placeholder="nombre del proyecto...">
+            <input type="text" id="search-by-name" placeholder="nombre del proyecto...">
         </label>
-        <button class="btn btn-success" id="search-trigger">Buscar</button>
+        <button class="btn btn-success" id="searching-name-trigger">Buscar por Nombre</button>
     </div>
+    <div>
+        <label>
+            <input type="date" id="search-by-date">
+        </label>
+        <button class="btn btn-success" id="searching-date-trigger">Buscar por Fecha</button>
+    </div>
+    
     <div id="projects"></div>
 
     <script src="../../dist/bundle.js"></script>
