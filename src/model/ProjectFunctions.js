@@ -3,11 +3,12 @@ function findByName(name, projectsArray) {
   console.log("Finding by name...")
   try {
     for (let index = 0; index < projectsArray.length; index++) {
-      if (name === projectsArray[index].name) {
+      if (name.toLowerCase() === projectsArray[index].name) {
         console.log(projectsArray[index]);
         console.log("Found!");
         return projectsArray[index];
       } else {
+        alert("DEJE DE BUSCAR ESTUPIDECES!!!")
         console.log("Project not found!")
       }
     }
