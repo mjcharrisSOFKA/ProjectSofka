@@ -97,14 +97,26 @@ eval("module.exports = {\"projects\":[{\"name\":\"pertrinum\",\"status\":\"100\"
 
 /***/ }),
 
+/***/ "./src/model/ProjectClass.js":
+/*!***********************************!*\
+  !*** ./src/model/ProjectClass.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("\r\nclass project {\r\n  constructor() {\r\n  }\r\n  getName() {\r\n    return this.name;\r\n  }\r\n  setName(name) {\r\n    this.name = name;\r\n  }\r\n}\r\n\r\nmodule.exports = project;\n\n//# sourceURL=webpack:///./src/model/ProjectClass.js?");
+
+/***/ }),
+
 /***/ "./src/projectController/ProjectController.js":
 /*!****************************************************!*\
   !*** ./src/projectController/ProjectController.js ***!
   \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("\r\nconst fileContents = __webpack_require__(/*! ../data/ProjectData.json */ \"./src/data/ProjectData.json\");\r\n\r\nconsole.log(fileContents);\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/projectController/ProjectController.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _model_ProjectClass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../model/ProjectClass */ \"./src/model/ProjectClass.js\");\n/* harmony import */ var _model_ProjectClass__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_model_ProjectClass__WEBPACK_IMPORTED_MODULE_0__);\n\r\n\r\n\r\nlet projectsArray = [];\r\nconst fileContents = __webpack_require__(/*! ../data/ProjectData.json */ \"./src/data/ProjectData.json\");\r\n\r\nlet jsonArrayLength = fileContents.projects.length;\r\nlet projectObject;\r\n\r\nfor (let index = 0; index < jsonArrayLength; index++) {\r\n  projectObject = new _model_ProjectClass__WEBPACK_IMPORTED_MODULE_0___default.a();\r\n  projectObject.setName(fileContents.projects[index].name);\r\n  projectsArray.push(projectObject);\r\n}\r\n\r\nlet title = document.getElementById('projectName');\r\nconsole.log(projectsArray);\r\n\r\ntitle.innerHTML = projectsArray[0].getName;\r\n\n\n//# sourceURL=webpack:///./src/projectController/ProjectController.js?");
 
 /***/ })
 
