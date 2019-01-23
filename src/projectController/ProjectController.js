@@ -1,6 +1,9 @@
 
-const fs = require('fs');
+//onst fs = require('fs');
 
-const fileContents = fs.readFileSync('../../data/ProjectData.json');
+const fileContents = require('../../data/ProjectData.json');
 
 var objectsProyect = JSON.parse(fileContents);
+
+console.log(objectsProyect);
+
