@@ -1,57 +1,39 @@
 
 import projectImport from "../model/ProjectClass";
-import { findByName, findByDate } from "./../model/ProjectFunctions"
+import { findValueByAnyAttributeInArray } from "./../model/ProjectFunctions"
 
 const fileContents = require('../data/ProjectData.json');
+let jsonProjects = fileContents.projects;
 let projectCards = document.getElementById('projects')
-let projectsArray = [];
-let jsonArrayLength = fileContents.projects.length;
 let projectObject;
-let foundByName = new projectImport();
+let projectsSearched = [];
 
-try {
-  createProjectObjects();
-} catch (error) {
-  console.log("Error: " + error);
+document.getElementById('searching-trigger').addEventListener('click', search());
+
+function search() {
+  let value = document.getElementById('search-by-name-participant').value;
+  let attribute = "status";
+  projectsSearched = findValueByAnyAttributeInArray(value, attribute, jsonProjects);
+};
+
+printSearchResults(projectsSearched);
+
+function showAllProjects() {
+  for (let index = 0; index < jsonProjects.length; index++) {
+    printCardHtml(jsonProjects[index].img,
+      jsonProjects[index].name,
+      jsonProjects[index].description);
+  }
+};
+
+function printSearchResults(resultsArray) {
+  for (let i = 0; i < resultsArray.length; i++) {
+    printCardHtml(resultsArray[i].img, resultsArray[i].name, resultsArray[i].description);
+  }
 }
 
-document.getElementById('searching-name-trigger').onclick = function searchByName() {
-  try {
-    let searchByName = document.getElementById('search-by-name');
-    
-    foundByName = findByName(searchByName.value, projectsArray);
-    projectCards.innerText = " ";
-    if (foundByName !== undefined) {
-      addDivCard(foundByName.image, foundByName.name, foundByName.description)
-    }
-  } catch (error) {
-    console.log("Error: " + error);
-  }
-};
-
-document.getElementById('searching-date-trigger').onclick = function searchByDate() {
-  try {
-    let searchByDate = document.getElementById('search-by-date');
-    
-    foundByName = findByDate(searchByDate.value, projectsArray);
-    projectCards.innerText = " ";
-    if (foundByName !== undefined) {
-      addDivCard(foundByName.image, foundByName.name, foundByName.description)
-    }
-  } catch (error) {
-    console.log("Error: " + error);
-  }
-};
-
-(function printProjects() {
-  for (let index = 0; index < jsonArrayLength; index++) {
-    addDivCard(projectsArray[index].getImg(),
-      projectsArray[index].getName(),
-      projectsArray[index].getDescription());
-  }
-}());
-
 function createProjectObjects() {
+  let projectsArray = [];
   for (let index = 0; index < jsonArrayLength; index++) {
     let object = fileContents.projects[index];
     projectObject = new projectImport();
@@ -63,13 +45,14 @@ function createProjectObjects() {
     projectObject.setEndDate(object.endDate);
     projectsArray.push(projectObject);
   }
+  projectsArray
 };
 
-function addDivCard(image, title, description) {
+function printCardHtml(image, title, description) {
   let div = document.createElement('div');
 
   div.className = 'card';
-  div.style = 'width: 18rem';
+  div.style = 'width: 18rem; float: left';
   div.innerHTML = "<img src=" + image + " class='card-img-top'>"
     + "<div class='card-body'>"
     + "<h5 class='card-title'> " + title + " </h5> "
