@@ -40,4 +40,8 @@ class project {
   }
 }
 
+class ProjectCrud {
+  
+}
+
 module.exports = project;

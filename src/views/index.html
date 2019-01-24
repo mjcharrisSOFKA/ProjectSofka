@@ -12,21 +12,31 @@
 
 <body>
     <div>
-        <label> Buscar por nombre o estado
-            <input type="text" id="search-by-name-participant" placeholder=". . .">
-        </label>
-        <button class="btn btn-success" id="searching-trigger">Buscar</button>
+        <div class="form-group">
+            Buscar por:
+            <label><input type="radio" name="search" value="name" checked> Nombre</label>
+            <label><input type="radio" name="search" value="status"> Estado</label>
+            <input type="text" id="search-by" placeholder=". . .">
+            <button class="btn-success" id="searching-trigger">Buscar</button>
+        </div>
     </div>
     <div>
         <label>
             <input type="date" id="search-by-date">
         </label>
-        <button class="btn btn-success" id="searching-date-trigger">Buscar por Fecha</button>
+        <button class="btn-success" id="searching-date-trigger">Buscar por Fecha</button>
     </div>
-    
+    <button class="btn-info" id="show-all-projects">Mostrar todos los Proyectos</button>
+
     <div id="projects"></div>
+    
+    <div>
+        <button id="create-new-project" class="btn-success">+</button>
+    </div>
 
     <script src="../../dist/bundle.js"></script>
+    <script>
+    </script>
 </body>
 
 </html>
