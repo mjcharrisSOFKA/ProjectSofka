@@ -62,8 +62,20 @@ function addOptionsToSelectFromJson(select, jsonArray) {
   }
 };
 
+function addInputsToDivFromJson(div, jsonArray) {
+  for (let index = 0; index < jsonArray.length; index++) {
+    let label = document.createElement('label');
+    label.innerText = jsonArray[index].name;
+    let input = document.createElement('input');
+    input.type = 'checkbox';
+    input.id = jsonArray[index].name;
+    label.appendChild(input);
+    div.appendChild(label);
+  }
+};
+
 module.exports = {
   findValueByAnyAttributeInArray, showAllProjects,
   printSearchResults, getCheckedRadioButton,
-  addOptionsToSelectFromJson
+  addOptionsToSelectFromJson, addInputsToDivFromJson
 };

@@ -3,7 +3,7 @@ import { Project } from "../model/ProjectClass";
 import {
   findValueByAnyAttributeInArray, showAllProjects,
   printSearchResults, getCheckedRadioButton,
-  addOptionsToSelectFromJson
+  addOptionsToSelectFromJson, addInputsToDivFromJson
 } from "./../model/ProjectFunctions"
 
 const JSON_FILE_FOR_PROJECTS = require('../data/ProjectData.json');
@@ -31,7 +31,11 @@ document.getElementById('show-all-projects').addEventListener('click', () => {
 
 document.getElementById('open-modal').addEventListener('click', () => {
   let clientsSelect = document.getElementById('select-clients');
+  let technologies = document.getElementById('technologies');
+  let sofkianos = document.getElementById('sofkianos');
   addOptionsToSelectFromJson(clientsSelect, JSON_CLIENTS);
+  addInputsToDivFromJson(technologies, JSON_CLIENTS);
+  addInputsToDivFromJson(sofkianos, JSON_CLIENTS);
 });
 
 
