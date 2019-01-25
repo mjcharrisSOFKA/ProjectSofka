@@ -7,6 +7,7 @@ import {
   getCheckedBoxes
 } from "./../model/ProjectFunctions"
 
+const JSON_TEST = require('../data/test.json');
 const JSON_FILE_FOR_PROJECTS = require('../data/ProjectData.json');
 const JSON_PROJECTS = JSON_FILE_FOR_PROJECTS.projects;
 const JSON_FILE_FOR_CLIENTS = require('../data/clientData.json');
@@ -18,7 +19,6 @@ let projectSofkianos = [];
 
 showAllProjects(JSON_PROJECTS);
 
-
 document.getElementById('searching-trigger').addEventListener('click', () => {
   let value = document.getElementById('search-by').value;
   let radioButtons = document.getElementsByName('search');
@@ -29,7 +29,6 @@ document.getElementById('searching-trigger').addEventListener('click', () => {
 });
 
 document.getElementById('show-all-projects').addEventListener('click', () => {
-  projectCards.innerHTML = "";
   showAllProjects(JSON_PROJECTS);
 });
 
@@ -43,18 +42,26 @@ document.getElementById('open-modal').addEventListener('click', () => {
 });
 
 document.getElementById('create-project').addEventListener('click', () => {
-  let name = document.getElementById('project-name');
-  let description = document.getElementById('project-description');
-  let starDate = document.getElementById('project-start-date');
-  let endDate = document.getElementById('project-end-date');
-  let image = document.getElementById('project-image');
-  let client = document.getElementById('project-client');
-  let projectTechnologies = getElementsByName('technology');
-  let projectSofkianos = getElementsByName('sofkiano');
-  getCheckedBoxes(projectTechnologies);
-  getCheckedBoxes(projectSofkianos);
+  let name = document.getElementById('project-name').value;
+  let description = document.getElementById('project-description').value;
+  console.log(description);
+  let starDate = document.getElementById('project-start-date').value;
+  let endDate = document.getElementById('project-end-date').value;
+  let image = document.getElementById('project-image').value;
+  let client = document.getElementById('project-client').value;
+
+  let projectTechnologies = document.getElementsByName('technology');
+  let projectSofkianos = document.getElementsByName('sofkiano');
+  let technologies = getCheckedBoxes(projectTechnologies);
+  let sofkianos = getCheckedBoxes(projectSofkianos);
 
   let projectToCreate = new Project(name, 0, description, starDate, endDate,
-    image, client, projectTechnologies, projectSofkianos);
+    image, client, technologies, sofkianos);
+
+  console.log(projectToCreate);
+  JSON.stringify(JSON_PROJECTS.push(projectToCreate));
+  console.log(JSON_PROJECTS);
+  showAllProjects(JSON_PROJECTS);
+
 
 });

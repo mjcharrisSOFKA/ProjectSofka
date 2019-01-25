@@ -20,6 +20,7 @@ function findValueByAnyAttributeInArray(value, attribute, projects) {
 };
 
 function showAllProjects(jsonArray) {
+  projectCards.innerHTML = "";
   for (let index = 0; index < jsonArray.length; index++) {
     printCardHtml(jsonArray[index].img,
       jsonArray[index].name,
@@ -80,9 +81,11 @@ function getCheckedBoxes(checkboxArray) {
   let checkedBoxes = [];
   for (let index = 0; index < checkboxArray.length; index++) {
     if (checkboxArray[index].checked) {
-      checkedBoxes.push(checkboxArray[index].id);
+      let checkBoxId = checkboxArray[index].id.toString();
+      checkedBoxes.push(checkBoxId);
     }
   }
+  console.log(checkedBoxes);
   return checkedBoxes;
 };
 

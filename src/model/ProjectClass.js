@@ -3,6 +3,7 @@ class Project {
   constructor(name, status, description, startDate, endDate, image, client, tech, sofkianos) {
     this.name = name;
     this.status = status;
+    this.description = description;
     this.startDate = startDate;
     this.endDate = endDate;
     this.image = image;
