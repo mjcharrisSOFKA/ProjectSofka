@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
         crossorigin="anonymous">
     <title>Projects</title>
 
@@ -20,23 +20,59 @@
             <button class="btn-success" id="searching-trigger">Buscar</button>
         </div>
     </div>
-    <div>
-        <label>
-            <input type="date" id="search-by-date">
-        </label>
-        <button class="btn-success" id="searching-date-trigger">Buscar por Fecha</button>
-    </div>
     <button class="btn-info" id="show-all-projects">Mostrar todos los Proyectos</button>
-
     <div id="projects"></div>
-    
-    <div>
-        <button id="create-new-project" class="btn-success">+</button>
+
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="open-modal">Open Modal</button>
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Create Project</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <label>Nombre: <input type="text">
+                        </label>
+                        <label>Descripción: <input type="text">
+                        </label>
+                        <label>Fecha de inicio: <input type="date">
+                        </label>
+                        <label>Fecha de fin: <input type="date">
+                        </label>
+                        <hr>
+                        <label>Cliente: <select id="select-clients">
+
+                            </select>
+                        </label>
+                        <br>
+                        <label>Tecnologías: <span id="technologies">
+
+                            </span>
+                        </label>
+                        <br>
+                        <label>Sofkianos: <span id="sofkianos">
+
+                            </span>
+                        </label>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success">Crear</button>
+                </div>
+            </div>
+
+        </div>
     </div>
 
     <script src="../../dist/bundle.js"></script>
-    <script>
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+
 </body>
 
 </html>

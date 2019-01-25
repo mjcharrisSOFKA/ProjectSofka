@@ -3,21 +3,6 @@
 
 let projectCards = document.getElementById('projects')
 
-function createProjectObjects(jsonArray) {
-  let projectsArray = [];
-  for (let index = 0; index < jsonArray.length; index++) {
-    let object = fileContents.projects[index];
-    projectObject = new projectImport();
-    projectObject.setImg(object.img);
-    projectObject.setName(object.name);
-    projectObject.setDescription(object.description);
-    projectObject.setStatus(object.status);
-    projectObject.setStartDate(object.startDate);
-    projectObject.setEndDate(object.endDate);
-    projectsArray.push(projectObject);
-  }
-};
-
 function findValueByAnyAttributeInArray(value, attribute, projects) {
   try {
 
@@ -32,7 +17,7 @@ function findValueByAnyAttributeInArray(value, attribute, projects) {
   } catch (error) {
     console.log("Error: " + error);
   }
-}
+};
 
 function showAllProjects(jsonArray) {
   for (let index = 0; index < jsonArray.length; index++) {
@@ -46,7 +31,7 @@ function printSearchResults(resultsArray) {
   for (let i = 0; i < resultsArray.length; i++) {
     printCardHtml(resultsArray[i].img, resultsArray[i].name, resultsArray[i].description);
   }
-}
+};
 
 function getCheckedRadioButton(radioButtons) {
   for (let index = 0; index < radioButtons.length; index++) {
@@ -54,20 +39,31 @@ function getCheckedRadioButton(radioButtons) {
       return radioButtons[index].value;
     }
   }
-}
-
+};
 
 function printCardHtml(image, title, description) {
   let div = document.createElement('div');
-  
+
   div.className = 'card';
   div.style = 'width: 18rem; float: left';
   div.innerHTML = "<img src=" + image + " class='card-img-top'>"
     + "<div class='card-body'>"
     + "<h5 class='card-title'> " + title + " </h5> "
     + "<p class='card-text'> " + description + " </p>";
-  
-  projectCards.appendChild(div);
-}
 
-module.exports = { findValueByAnyAttributeInArray, showAllProjects, printSearchResults, getCheckedRadioButton };
+  projectCards.appendChild(div);
+};
+
+function addOptionsToSelectFromJson(select, jsonArray) {
+  for (let index = 0; index < jsonArray.length; index++) {
+    let option = document.createElement('option');
+    option.innerText = jsonArray[index].name;
+    select.insertAdjacentElement("beforeend", option);
+  }
+};
+
+module.exports = {
+  findValueByAnyAttributeInArray, showAllProjects,
+  printSearchResults, getCheckedRadioButton,
+  addOptionsToSelectFromJson
+};
