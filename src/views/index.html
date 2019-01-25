@@ -34,16 +34,18 @@
                 </div>
                 <div class="modal-body">
                     <form>
-                        <label>Nombre: <input type="text">
+                        <label>Nombre: <input type="text" id="project-name">
                         </label>
-                        <label>Descripción: <input type="text">
+                        <label>Descripción: <input type="text" id="project-description">
                         </label>
-                        <label>Fecha de inicio: <input type="date">
+                        <label>Fecha de inicio: <input type="date" id="project-start-date">
                         </label>
-                        <label>Fecha de fin: <input type="date">
+                        <label>Fecha de fin: <input type="date" id="project-end-date">
+                        </label>
+                        <label>Imagen <input type="file" id="project-image">
                         </label>
                         <hr>
-                        <label>Cliente: <select id="select-clients">
+                        <label>Cliente: <select id="select-clients" id="project-client">
 
                             </select>
                         </label>
@@ -61,7 +63,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success">Crear</button>
+                    <button type="button" class="btn btn-success" id="create-project">Crear</button>
+                    <button id="test">Testing</button>
                 </div>
             </div>
 

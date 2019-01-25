@@ -57,25 +57,38 @@ function printCardHtml(image, title, description) {
 function addOptionsToSelectFromJson(select, jsonArray) {
   for (let index = 0; index < jsonArray.length; index++) {
     let option = document.createElement('option');
+    option.id = 'project-client';
     option.innerText = jsonArray[index].name;
     select.insertAdjacentElement("beforeend", option);
   }
 };
 
-function addInputsToDivFromJson(div, jsonArray) {
+function addInputsToDivFromJsonWithName(div, jsonArray, name) {
   for (let index = 0; index < jsonArray.length; index++) {
     let label = document.createElement('label');
     label.innerText = jsonArray[index].name;
     let input = document.createElement('input');
     input.type = 'checkbox';
+    input.name = name;
     input.id = jsonArray[index].name;
     label.appendChild(input);
     div.appendChild(label);
   }
 };
 
+function getCheckedBoxes(checkboxArray) {
+  let checkedBoxes = [];
+  for (let index = 0; index < checkboxArray.length; index++) {
+    if (checkboxArray[index].checked) {
+      checkedBoxes.push(checkboxArray[index].id);
+    }
+  }
+  return checkedBoxes;
+};
+
 module.exports = {
   findValueByAnyAttributeInArray, showAllProjects,
   printSearchResults, getCheckedRadioButton,
-  addOptionsToSelectFromJson, addInputsToDivFromJson
+  addOptionsToSelectFromJson, addInputsToDivFromJsonWithName,
+  getCheckedBoxes
 };
